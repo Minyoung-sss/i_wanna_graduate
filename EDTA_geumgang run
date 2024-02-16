@@ -16,6 +16,13 @@ cp: cannot stat '../R498_scaffold.fasta.mod.EDTA.raw/R498_scaffold.fasta.mod.RM2
 이걸 실행하지도 못함
 
 결과로
+Thu Feb 15 21:24:37 KST 2024    TE annotation using the EDTA library has finished! Check out:
+                                Whole-genome TE annotation (total TE: 47.25%): R498_scaffold.fasta.mod.EDTA.TEanno.gff3
+                                Whole-genome TE annotation summary: R498_scaffold.fasta.mod.EDTA.TEanno.sum
+                                Low-threshold TE masking for MAKER gene annotation (masked: 28.88%): R498_scaffold.fasta.mod.MAKER.masked
+
+Thu Feb 15 21:24:37 KST 2024    Evaluate the level of inconsistency for whole-genome TE annotation:
+
 Thu Feb 15 21:37:11 KST 2024    Evaluation of TE annotation finished! Check out these files:
 
                                 Overall: R498_scaffold.fasta.mod.EDTA.TE.fa.stat.all.sum
@@ -24,6 +31,7 @@ Thu Feb 15 21:37:11 KST 2024    Evaluation of TE annotation finished! Check out 
 
                                 If you want to learn more about the formatting and information of these files, please visit:
                                         https://github.com/oushujun/EDTA/wiki/Making-sense-of-EDTA-usage-and-outputs---Q&A
+T
 
 이게 나옴
 (대략 10시간 소요)
