@@ -1,0 +1,25 @@
+# EDTA 실행기
+
+이런 경고도 뜨고
+Warning: Evirus/ERTBV-C not found in the TE_SO database, will use the general term 'repeat_region       SO:0000657' to replace it.
+Warning: Evirus/ERTBV not found in the TE_SO database, will use the general term 'repeat_region SO:0000657' to replace it.
+
+
+Thu Feb 15 15:38:13 KST 2024    Perform EDTA final steps to generate a non-redundant comprehensive TE library.
+cp: cannot stat '../R498_scaffold.fasta.mod.EDTA.raw/R498_scaffold.fasta.mod.RM2.fa': No such file or directory
+                                Skipping the RepeatModeler results (--sensitive 0).
+                                Run EDTA.pl --step final --sensitive 1 if you want to add RepeatModeler results.
+
+이걸 실행하지도 못함
+
+결과로
+Thu Feb 15 21:37:11 KST 2024    Evaluation of TE annotation finished! Check out these files:
+
+                                Overall: R498_scaffold.fasta.mod.EDTA.TE.fa.stat.all.sum
+                                Nested: R498_scaffold.fasta.mod.EDTA.TE.fa.stat.nested.sum
+                                Non-nested: R498_scaffold.fasta.mod.EDTA.TE.fa.stat.redun.sum
+
+                                If you want to learn more about the formatting and information of these files, please visit:
+                                        https://github.com/oushujun/EDTA/wiki/Making-sense-of-EDTA-usage-and-outputs---Q&A
+
+이게 나옴
