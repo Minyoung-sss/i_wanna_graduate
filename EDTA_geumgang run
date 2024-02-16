@@ -1,4 +1,7 @@
 # EDTA 실행기
+EDTA.pl --genome /home/song/scaffold/R498_scaffold.fasta --species Rice --cds R498_cds.fa --curatedlib database/rice7.0.0.liban  --sensitive 1 --anno 1 --evaluate 1 --overwrite 1 --threads 8 
+
+# cds로 R498 사용
 
 이런 경고도 뜨고
 Warning: Evirus/ERTBV-C not found in the TE_SO database, will use the general term 'repeat_region       SO:0000657' to replace it.
@@ -23,3 +26,5 @@ Thu Feb 15 21:37:11 KST 2024    Evaluation of TE annotation finished! Check out 
                                         https://github.com/oushujun/EDTA/wiki/Making-sense-of-EDTA-usage-and-outputs---Q&A
 
 이게 나옴
+(대략 10시간 소요)
+
