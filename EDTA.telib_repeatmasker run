@@ -22,3 +22,65 @@ masking
 done
 
 이러고 끝남
+
+(EDTA2.2) song@DESKTOP-DL2KDRF:~/repeat/RepeatMasker/out$ cat R498_scaffold.fasta.tbl
+==================================================
+file name: R498_scaffold.fasta
+sequences:            14
+total length:  394027915 bp  (394027115 bp excl N/X-runs)
+GC level:         43.63 %
+bases masked:  195049380 bp ( 49.50 %)
+==================================================
+               number of      length   percentage
+               elements*    occupied  of sequence
+--------------------------------------------------
+Retroelements        82603    110869095 bp   28.14 %
+   SINEs:             8886      1347523 bp    0.34 %
+   Penelope:             0            0 bp    0.00 %
+   LINEs:            18857      6116637 bp    1.55 %
+    CRE/SLACS            0            0 bp    0.00 %
+     L2/CR1/Rex          0            0 bp    0.00 %
+     R1/LOA/Jockey       0            0 bp    0.00 %
+     R2/R4/NeSL          0            0 bp    0.00 %
+     RTE/Bov-B           0            0 bp    0.00 %
+     L1/CIN4             0            0 bp    0.00 %
+   LTR elements:     54860    103404935 bp   26.24 %
+     BEL/Pao             0            0 bp    0.00 %
+     Ty1/Copia        9487     13088184 bp    3.32 %
+     Gypsy/DIRS1     38581     88959687 bp   22.58 %
+       Retroviral        0            0 bp    0.00 %
+
+DNA transposons     177964     58329901 bp   14.80 %
+   hobo-Activator    23749      6170064 bp    1.57 %
+   Tc1-IS630-Pogo        0            0 bp    0.00 %
+   En-Spm                0            0 bp    0.00 %
+   MULE-MuDR             0            0 bp    0.00 %
+   PiggyBac              0            0 bp    0.00 %
+   Tourist/Harbinger 57644     11663756 bp    2.96 %
+   Other (Mirage,        0            0 bp    0.00 %
+    P-element, Transib)
+
+Rolling-circles          0            0 bp    0.00 %
+
+Unclassified:        50305     12005941 bp    3.05 %
+
+Total interspersed repeats:   181204937 bp   45.99 %
+
+
+Small RNA:               0            0 bp    0.00 %
+
+Satellites:            133      2918284 bp    0.74 %
+Simple repeats:          0            0 bp    0.00 %
+Low complexity:          0            0 bp    0.00 %
+==================================================
+
+* most repeats fragmented by insertions or deletions
+  have been counted as one element
+
+
+RepeatMasker version 4.1.6 , sensitive mode
+
+run with rmblastn version 2.14.1+
+The query was compared to classified sequences in "R498_scaffold.fasta.mod.EDTA.TElib.fa"
+FamDB:
+
