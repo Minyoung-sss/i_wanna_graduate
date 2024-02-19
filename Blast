@@ -1,0 +1,99 @@
+#Local blast 
+local blast 돌리기 위해서는 blast를 돌릴 database가 필요함
+
+#database 만드는법
+song@DESKTOP-DL2KDRF:~/ncbi-blast-2.15.0+/blastdb$ makeblastdb -in /mnt/c/users/Public/data/vector/staphylococcus_warneri.fna -dbtype nucl -out staphylococcus_warneri.fasta
+
+여기서 -in 은 넣을 input file, -dbtype : database 타입, -out : database 이름  하면
+
+Building a new DB, current time: 02/18/2024 18:05:06
+New DB name:   /home/song/ncbi-blast-2.15.0+/blastdb/staphylococcus_warneri.fasta
+New DB title:  /mnt/c/users/Public/data/vector/staphylococcus_warneri.fna
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 1000000000B
+Adding sequences from FASTA; added 2 sequences in 0.0241001 seconds.
+
+ staphylococcus_warneri.fasta.ndb   staphylococcus_warneri.fasta.nsq
+ staphylococcus_warneri.fasta.nhr   staphylococcus_warneri.fasta.ntf
+ staphylococcus_warneri.fasta.nin   staphylococcus_warneri.fasta.nto
+staphylococcus_warneri.fasta.not
+
+생성 완료
+
+# blastn
+song@DESKTOP-DL2KDRF:~/ncbi-blast-2.15.0+$ blastn -task blastn-short -query /home/song/vector/hpt656_F.fa -db blastdb/staphylococcus_warneri.fasta -out staphy_hptF.txt
+
+Database: /mnt/c/users/Public/data/vector/staphylococcus_warneri.fna
+           2 sequences; 2,541,629 total letters
+
+
+
+Query= Untitled  (22 bp)
+
+Length=22
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+NZ_CP032159.1 Staphylococcus warneri strain 22.1 chromosome st_wa...  24.3    1.2
+
+
+>NZ_CP032159.1 Staphylococcus warneri strain 22.1 chromosome st_war_22.1,
+complete sequence
+Length=2515743
+
+ Score = 24.3 bits (12),  Expect = 1.2
+ Identities = 12/12 (100%), Gaps = 0/12 (0%)
+ Strand=Plus/Minus
+
+Query  1       CAAGCTCTGATA  12
+               ||||||||||||
+Sbjct  248664  CAAGCTCTGATA  248653
+
+
+ Score = 24.3 bits (12),  Expect = 1.2
+ Identities = 12/12 (100%), Gaps = 0/12 (0%)
+ Strand=Plus/Plus
+
+Query  6        TCTGATAGAGTT  17
+                ||||||||||||
+Sbjct  1478532  TCTGATAGAGTT  1478543
+
+
+ Score = 22.3 bits (11),  Expect = 4.9
+ Identities = 11/11 (100%), Gaps = 0/11 (0%)
+ Strand=Plus/Plus
+
+Query  10      ATAGAGTTGGT  20
+               |||||||||||
+Sbjct  267338  ATAGAGTTGGT  267348
+
+
+이렇게 해도 되고
+
+song@DESKTOP-DL2KDRF:~/ncbi-blast-2.15.0+$ blastn -outfmt 0 -word_size 11 -dust no  -query /home/song/vector/hpt656_F.fa -db blastdb/staphylococcus_warneri.fasta -out staphy_hptF1.txt
+
+이렇게 해도 됨
+(위에랑 비슷한 결과 나옴)
+
+-outfmt 1 
+Query= Untitled  (22 bp)
+
+Length=22
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+NZ_CP032159.1 Staphylococcus warneri strain 22.1 chromosome st_wa...  25.1    0.42
+
+Query_1  1        CAAGCTCTGATAGAGTTGGT  20
+0        1478528   ...T............     1478543
+0        248664   ............          248653
+0        267338            ...........  267348
+0        642483          ...........    642493
+0        688191          ...........    688181
+0        1225905        ...........     1225915
+0        1281882  ...........           1281872
+0        1921136          ...........   1921126
+0        2150760   ...........          2150770
+
+이게 더 직관적이기도 한듯
