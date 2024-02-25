@@ -26,3 +26,49 @@
 
 변환함. 
 
+(rnaseq) song@DESKTOP-DL2KDRF:~/hisat$ samtools flagstat geumgang.sam
+61068956 + 0 in total (QC-passed reads + QC-failed reads)
+56191942 + 0 primary
+4877014 + 0 secondary
+0 + 0 supplementary
+0 + 0 duplicates
+0 + 0 primary duplicates
+59673194 + 0 mapped (97.71% : N/A)
+54796180 + 0 primary mapped (97.52% : N/A)
+56191942 + 0 paired in sequencing
+28095971 + 0 read1
+28095971 + 0 read2
+53715848 + 0 properly paired (95.59% : N/A)
+54091868 + 0 with itself and mate mapped
+704312 + 0 singletons (1.25% : N/A)
+158386 + 0 with mate mapped to a different chr
+150740 + 0 with mate mapped to a different chr (mapQ>=5)
+
+(rnaseq) song@DESKTOP-DL2KDRF:~/hisat$ samtools view -b -f 4 geumgang.bam > geumgang_unmapped.bam
+(rnaseq) song@DESKTOP-DL2KDRF:~/hisat$ samtools idxstats geumgang_unmapped.bam
+[E::idx_find_and_load] Could not retrieve index file for 'geumgang_unmapped.bam'
+samtools idxstats: fail to load index for "geumgang_unmapped.bam", reverting to slow method
+Chr01   44749635        0       82450
+Chr10   26353866        0       37727
+Chr11   32537380        0       38171
+Chr12   26850652        0       39534
+Chr02   37335287        0       84974
+Chr03   38912999        0       95010
+Chr04   37367387        0       55336
+Chr05   30610813        0       74406
+Chr06   32375588        0       57145
+Chr07   31599496        0       52344
+Chr08   30279307        0       51296
+Chr09   24673302        0       35758
+chrC    48879   0       95
+chrM    333324  0       66
+*       0       0       691450
+
+이렇게 unmapped 된 sequence 뽑아냄.
+근데 hisat에서 unmapp 찾는 기능 잇길래
+(rnaseq) song@DESKTOP-DL2KDRF:~/hisat$ hisat2 -x geumgang1 -p 10 -1 /home/song/rnaseq/Geumgang1ho_S3_R1_001.fastq -2 /home/song/rnaseq/Geumgang1ho_S3_R2_001.fastq --un-conc --new-summary -S geumgang_n
+ew.sam  2>&1  |tee alignmet.summary
+
+이렇게 해서 다시 돌려봄
+
+
