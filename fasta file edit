@@ -1,0 +1,50 @@
+ remove a list of reads from fasta file
+https://www.biostars.org/p/199946/
+
+$ grep ">" R498_scaffold.fasta
+>Chr01
+>Chr10
+>Chr11
+>Chr12
+>Chr02
+>Chr03
+>Chr04
+>Chr05
+>Chr06
+>Chr07
+>Chr08
+>Chr09
+>chrC
+>chrM
+
+$ cat chr.txt
+Chr01
+Chr10
+Chr11
+Chr12
+Chr02
+Chr03
+Chr04
+Chr05
+Chr06
+Chr07
+Chr08
+Chr09
+
+song@DESKTOP-DL2KDRF:~/scaffold$ seqtk subseq R498_scaffold.fasta chr.txt > R498_scaffold_chr12.fasta
+
+$ grep ">" R498_scaffold_chr12.fasta
+>Chr01
+>Chr10
+>Chr11
+>Chr12
+>Chr02
+>Chr03
+>Chr04
+>Chr05
+>Chr06
+>Chr07
+>Chr08
+>Chr09
+
+완료
