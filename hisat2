@@ -71,4 +71,26 @@ ew.sam  2>&1  |tee alignmet.summary
 
 이렇게 해서 다시 돌려봄
 
-
+(rnaseq) song@DESKTOP-DL2KDRF:~/hisat$ hisat2 -x geumgang1 -p 10 -1 /home/song/rnaseq/Geumgang1ho_S3
+_R1_001.fastq -2 /home/song/rnaseq/Geumgang1ho_S3_R2_001.fastq --un-conc --new-summary -S geumgang_n
+ew.sam  2>&1  |tee alignmet.summary
+28095971 reads; of these:
+  28095971 (100.00%) were paired; of these:
+    1238047 (4.41%) aligned concordantly 0 times
+    25798016 (91.82%) aligned concordantly exactly 1 time
+    1059908 (3.77%) aligned concordantly >1 times
+    ----
+    1238047 pairs aligned concordantly 0 times; of these:
+      135292 (10.93%) aligned discordantly 1 time
+    ----
+    1102755 pairs aligned 0 times concordantly or discordantly; of these:
+      2205510 mates make up the pairs; of these:
+        1395762 (63.29%) aligned 0 times
+        775761 (35.17%) aligned exactly 1 time
+        33987 (1.54%) aligned >1 times
+97.52% overall alignment rate
+(rnaseq) song@DESKTOP-DL2KDRF:~/hisat$ ls
+--new-summary.1   flastat.txt       geumgang1.1.ht2  geumgang1.5.ht2  geumgang_new.sam
+--new-summary.2   geumgang.bam      geumgang1.2.ht2  geumgang1.6.ht2  geumgang_unmapped.bam
+alignmet.summary  geumgang.bam.bai  geumgang1.3.ht2  geumgang1.7.ht2  geumgang_unmapped.bam.bai
+chr12             geumgang.sam      geumgang1.4.ht2  geumgang1.8.ht2  geumgang_unmapped.sam
