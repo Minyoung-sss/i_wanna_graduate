@@ -94,3 +94,10 @@ ew.sam  2>&1  |tee alignmet.summary
 --new-summary.2   geumgang.bam      geumgang1.2.ht2  geumgang1.6.ht2  geumgang_unmapped.bam
 alignmet.summary  geumgang.bam.bai  geumgang1.3.ht2  geumgang1.7.ht2  geumgang_unmapped.bam.bai
 chr12             geumgang.sam      geumgang1.4.ht2  geumgang1.8.ht2  geumgang_unmapped.sam
+
+----------------
+nipponbare hisat build
+hisat2-build -p 16 /home/kucmb/sequence/IRGSP-1.0_genome.fasta nipponbare
+hisat2 -x nipponbare -p 16 -1 /home/kucmb/my/rnaseq/Geumgang1ho_S3_R1_001.fastq -2 /home/kucmb/my/rnaseq/Geumgang1ho_S3_R2_001.fastq --un-conc NIP_unmappedseq.bam --new-summary -S NIP_geumgangRNA.sam  2>&1  |tee alignmet.summary
+
+
