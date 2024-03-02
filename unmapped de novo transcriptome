@@ -1,0 +1,33 @@
+# unmmaped rna sequence trinity
+(bioinfo) kucmb@kucmb-System-Product-Name:~/my/hisat$ docker run --rm -v`pwd`:`pwd` trinityrnaseq/trinityrnaseq Trinity \
+--seqType fq 
+--left `pwd`/unmapped_1.fastq 
+--right `pwd`/unmapped_2.fastq 
+--max_memory 1G --CPU 4 --output `pwd`/trinity_out
+
+
+     ______  ____   ____  ____   ____  ______  __ __
+    |      ||    \ |    ||    \ |    ||      ||  |  |
+    |      ||  D  ) |  | |  _  | |  | |      ||  |  |
+    |_|  |_||    /  |  | |  |  | |  | |_|  |_||  ~  |
+      |  |  |    \  |  | |  |  | |  |   |  |  |___, |
+      |  |  |  .  \ |  | |  |  | |  |   |  |  |     |
+      |__|  |__|\_||____||__|__||____|  |__|  |____/
+
+    Trinity-v2.15.1
+
+
+
+Left read files: $VAR1 = [
+          '/home/kucmb/my/hisat/unmapped_1.fastq'
+        ];
+Right read files: $VAR1 = [
+          '/home/kucmb/my/hisat/unmapped_2.fastq'
+        ];
+Trinity version: Trinity-v2.15.1
+-currently using the latest production release of Trinity.
+
+Saturday, March 2, 2024: 09:15:05	CMD: java -Xmx64m -XX:ParallelGCThreads=2  -jar /usr/local/bin/util/support_scripts/ExitTester.jar 0
+Saturday, March 2, 2024: 09:15:05	CMD: java -Xmx4g -XX:ParallelGCThreads=2  -jar /usr/local/bin/util/support_scripts/ExitTester.jar 1
+Saturday, March 2, 2024: 09:15:05	CMD: mkdir -p /home/kucmb/my/hisat/trinity_out
+Saturday, March 2, 2024: 09:15:05	CMD: mkdir -p /home/kucmb/my/hisat/trinity_out/chrysalis
