@@ -1,0 +1,31 @@
+# geumgang 에 붙지 않은 rna를 모아서 de novo transcriptome assembly를 한 다음 이게 맞는지 확인하기 위해 
+여기에 unmapped rna를 다시 붙여보기
+
+
+(bioinfo) kucmb@kucmb-System-Product-Name:~/my/hisat$ bowtie2-build trinity_out.Trinity.fasta Trinity.fasta
+
+ bowtie2 -p 16 --no-unal -x geumgang_unmap_Trinity/Trinity.fasta -q -1 pair_unmapped_1.fastq -2 pair_unmapped_2.fastq -U unpair_unmapped.fastq | samtools view -Sb -@ 10 -o geumgang_unmap_Trinity/bowtie2.Trinity.bam
+이거 안됨 쌍
+
+braker) kucmb@kucmb-System-Product-Name:~/my/hisat$  bowtie2 -p 10 -q --no-unal -k 20 -x geumgang_unmap_Trinity/Trinity.fasta -1 pair_unmapped_1.fastq -2 pair_unmapped_2.fastq -U unpair_unmapped.fastq -S \ 2>align_stats.txt| samtools view -@10 -b -o bowtie2.bam 
+1050037 reads; of these:
+  345725 (32.93%) were paired; of these:
+    291842 (84.41%) aligned concordantly 0 times
+    27984 (8.09%) aligned concordantly exactly 1 time
+    25899 (7.49%) aligned concordantly >1 times
+    ----
+    291842 pairs aligned concordantly 0 times; of these:
+      10628 (3.64%) aligned discordantly 1 time
+    ----
+    281214 pairs aligned 0 times concordantly or discordantly; of these:
+      562428 mates make up the pairs; of these:
+        507386 (90.21%) aligned 0 times
+        26374 (4.69%) aligned exactly 1 time
+        28668 (5.10%) aligned >1 times
+  704312 (67.07%) were unpaired; of these:
+    571593 (81.16%) aligned 0 times
+    63950 (9.08%) aligned exactly 1 time
+    68769 (9.76%) aligned >1 times
+22.70% overall alignment rate
+
+이건되네
