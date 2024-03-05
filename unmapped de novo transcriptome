@@ -31,3 +31,11 @@ Saturday, March 2, 2024: 09:15:05	CMD: java -Xmx64m -XX:ParallelGCThreads=2  -ja
 Saturday, March 2, 2024: 09:15:05	CMD: java -Xmx4g -XX:ParallelGCThreads=2  -jar /usr/local/bin/util/support_scripts/ExitTester.jar 1
 Saturday, March 2, 2024: 09:15:05	CMD: mkdir -p /home/kucmb/my/hisat/trinity_out
 Saturday, March 2, 2024: 09:15:05	CMD: mkdir -p /home/kucmb/my/hisat/trinity_out/chrysalis
+
+
+(braker) kucmb@kucmb-System-Product-Name:~/my/hisat$ docker run --rm -v`pwd`:`pwd` trinityrnaseq/trinityrnaseq Trinity \
+--seqType fq 
+--left `pwd`/unmapp.1.fastq 
+--right `pwd`/unmapp.2.fastq 
+--max_memory 10G --CPU 14 --output `pwd`/trinity_out
+
