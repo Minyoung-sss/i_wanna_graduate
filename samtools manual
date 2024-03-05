@@ -1,0 +1,6 @@
+#  sam 파일을 sort 도 하고 바로 이어서 bam 파일로도 만들기
+samtools view -@ 10 -b NIP_geumgang.sam | samtools sort -o NIP_geumgang.bam 
+
+# bam 파일을 sam 으로 만들기
+samtools view -@ 10 -h NIP_geumgang.bam -o NIP_geumgang.sam
+
