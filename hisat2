@@ -100,4 +100,6 @@ nipponbare hisat build
 hisat2-build -p 16 /home/kucmb/sequence/IRGSP-1.0_genome.fasta nipponbare
 hisat2 -x nipponbare -p 16 -1 /home/kucmb/my/rnaseq/Geumgang1ho_S3_R1_001.fastq -2 /home/kucmb/my/rnaseq/Geumgang1ho_S3_R2_001.fastq --un-conc NIP_unmappedseq.bam --new-summary -S NIP_geumgangRNA.sam  2>&1  |tee alignmet.summary
 
+hisat2 -x nipponbare -p 16 -1 /home/kucmb/my/rnaseq/Geumgang1ho_S3_R1_001.fastq -2 /home/kucmb/my/rnaseq/Geumgang1ho_S3_R2_001.fastq --un-conc NIP_unmappedseq.bam --new-summary |tee alignmet.summary | samtools sort -O BAM | tee geumgangRNA.bam
 
+------------------------------
