@@ -29,3 +29,7 @@ braker) kucmb@kucmb-System-Product-Name:~/my/hisat$  bowtie2 -p 10 -q --no-unal 
 22.70% overall alignment rate
 
 이건되네
+
+위에거 버리고 다시함
+(bioinfo) kucmb@kucmb-System-Product-Name:~/my/hisat$ bowtie2 -p 10 
+-q --no-unal -k 20 -x Trinity.fasta -1 unmapp.1.fastq -2 unmapp.2.fastq -S \ 2>align_stats.txt| samtools view -@10 -b -o bowtie2.bam
