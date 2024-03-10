@@ -1,5 +1,8 @@
 #RepeatMasker
-RepeatMasker -e ncbi -pa 8 -s -no_is -norna -nolow -xsmall -gff -lib R498_scaffold.fasta.mod.EDTA.TElib.fa -dir /home/song/repeat/RepeatMasker/out -cutoff 225 /home/song/scaffold/R498_scaffold.fasta
+RepeatMasker -e ncbi -pa 8 -s -no_is -norna -nolow -xsmall -gff -lib R498_scaffold.fasta.mod.EDTA.TElib.fa \
+   -dir /home/song/repeat/RepeatMasker/out \
+   -cutoff 225 /home/song/scaffold/R498_scaffold.fasta
+
 pa 값 조금만 더 올려도 될듯
 이러니깐 돌아간다
 
@@ -83,4 +86,11 @@ RepeatMasker version 4.1.6 , sensitive mode
 run with rmblastn version 2.14.1+
 The query was compared to classified sequences in "R498_scaffold.fasta.mod.EDTA.TElib.fa"
 FamDB:
+
+
+------------------
+
+RepeatMasker -e ncbi -pa 8 -s -no_is -norna -nolow -xsmall -gff -lib R498_scaffold.fasta.mod.EDTA.TElib.fa \
+   -dir /home/song/repeat/RepeatMasker/out \
+   -cutoff 225 /home/song/scaffold/R498_scaffold.fasta 
 
