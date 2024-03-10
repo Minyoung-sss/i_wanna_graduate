@@ -1,5 +1,5 @@
 #RepeatMasker
-RepeatMasker -e ncbi -pa 8 -s -no_is -norna -nolow -xsmall -gff -lib R498_scaffold.fasta.mod.EDTA.TElib.fa \
+RepeatMasker -e ncbi -pa 8 -s -no_is -norna -nolow --xsmall -gff -lib R498_scaffold.fasta.mod.EDTA.TElib.fa \
    -dir /home/song/repeat/RepeatMasker/out \
    -cutoff 225 /home/song/scaffold/R498_scaffold.fasta
 
@@ -90,7 +90,7 @@ FamDB:
 
 ------------------
 
-RepeatMasker -e ncbi -pa 8 -s -no_is -norna -nolow -xsmall -gff -lib R498_scaffold.fasta.mod.EDTA.TElib.fa \
-   -dir /home/song/repeat/RepeatMasker/out \
-   -cutoff 225 /home/song/scaffold/R498_scaffold.fasta 
+RepeatMasker -e ncbi -pa 16 -s -no_is -norna -gff -nolow -lib R498_scaffold.fasta.mod.EDTA.TElib.fa \
+  -xsmall -dir /home/kucmb/my/RepeatMaskerout/0310 \
+   -cutoff 225 /home/kucmb/my/R498_scaffold.fasta 
 
