@@ -1,0 +1,5 @@
+#picard 로 hisat 돌리고 결과 확인
+
+(braker) kucmb@kucmb-System-Product-Name:~/my/hisat$ java -jar /home/kucmb/picard-2.27.5/picard.jar \
+        CollectAlignmentSummaryMetrics REFERENCE_SEQUENCE=../R498_scaffold.fasta \ 
+        INPUT=new_gemgang1.bam OUTPUT=new_geumgang1.bam.stats
