@@ -1,0 +1,17 @@
+#braker3 돌리기
+local도 문제고, docker도 안된다길래
+singulrity 설치해서 이미지 다운로드 해서 콘테이너 실행하기로함
+
+singularity exec braker3.sif braker.pl
+이게 기본 명령어
+
+근데 우리는 저 파일이 있는곳이 아닌 SSD에 저장할거라
+(braker) kucmb@kucmb-System-Product-Name:/pacbio/Braker$ singularity exec /home/kucmb/BRAKER-3.0.8/braker3.sif braker.pl
+
+--dta : Hisat으로 alinging 한 bam 파일 사용시 사용하는 옵션 (default는 tophat)
+--gff3  
+
+(braker) kucmb@kucmb-System-Product-Name:/pacbio/Braker$ singularity exec /home/kucmb/BRAKER-3.0.8/braker3.sif braker.pl  
+--genome=/home/kucmb/my/RepeatMaskerout/0310/R498_scaffold.fasta.masked 
+--prot_seq=/pacbio/pepseq/protseq_total.faa 
+--bam=/home/kucmb/my/hisat/new_gemgang1.bam --species=Oryza_sativa --gff3 
