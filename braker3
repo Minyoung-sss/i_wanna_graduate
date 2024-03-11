@@ -10,8 +10,22 @@ singularity exec braker3.sif braker.pl
 
 --dta : Hisat으로 alinging 한 bam 파일 사용시 사용하는 옵션 (default는 tophat)
 --gff3  
+--UTR=on 
+--threds 16
 
-(braker) kucmb@kucmb-System-Product-Name:/pacbio/Braker$ singularity exec /home/kucmb/BRAKER-3.0.8/braker3.sif braker.pl  
---genome=/home/kucmb/my/RepeatMaskerout/0310/R498_scaffold.fasta.masked 
---prot_seq=/pacbio/pepseq/protseq_total.faa 
---bam=/home/kucmb/my/hisat/new_gemgang1.bam --species=Oryza_sativa --gff3 
+(braker) kucmb@kucmb-System-Product-Name:/pacbio/Braker$ 
+--genome=/home/kucmb/my/RepeatMaskerout/0310/R498_scaffold.fasta.masked \
+--prot_seq=/home/kucmb/my/protseq_total.faa \
+--bam=/home/kucmb/my/hisat/new_gemgang1.bam --species=Oryza_sativa --gff3 \
+--AUGUSTUS_CONFIG_PATH=/home/kucmb/Augustus/config/ \
+--AUGUSTUS_BIN_PATH=/home/kucmb/Augustus/bin \
+--AUGUSTUS_SCRIPTS_PATH=/home/kucmb/Augustus/scripts \
+
+
+singularity exec /home/kucmb/BRAKER-3.0.8/braker3.sif braker.pl --genome=/home/kucmb/my/RepeatMaskerout/0310/R498_scaffold.fasta.masked 
+-prot_seq=/home/kucmb/my/protseq_total.faa --bam=/home/kucmb/my/hisat/new_gemgang1.bam --species=Oryza_sativa --gff3 
+--AUGUSTUS_CONFIG_PATH=/home/kucmb/Augustus/config/ --AUGUSTUS_BIN_PATH=/home/kucmb/Augustus/bin --AUGUSTUS_SCRIPTS_PATH=/home/kucmb/Augustus/scripts
+--threads 20
+
+이걸로 하고 있고
+log는 /pacbio/Braker/braker/braker.log에 쌓이는 중
