@@ -4,3 +4,9 @@ samtools view -@ 10 -b NIP_geumgang.sam | samtools sort -o NIP_geumgang.bam
 # bam 파일을 sam 으로 만들기
 samtools view -@ 10 -h NIP_geumgang.bam -o NIP_geumgang.sam
 
+bam에ㅛㅓ 추출
+
+samtools index new_gemgang1.bam
+samtools view -bh new_gemgang1.bam "Chr04:13173198-13174224" > chr04.extracted.bam
+samtools fasta chr04.extracted.bam -1 1.fasta -2 2.fasta -0 3.fasta
+
