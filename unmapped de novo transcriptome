@@ -39,3 +39,10 @@ Saturday, March 2, 2024: 09:15:05	CMD: mkdir -p /home/kucmb/my/hisat/trinity_out
 --right `pwd`/unmapp.2.fastq 
 --max_memory 10G --CPU 14 --output `pwd`/trinity_out
 
+
+
+# Genome-guided Trinity De novo Transcriptome Assembly
+docker run --rm -v`pwd`:`pwd` trinityrnaseq/trinityrnaseq Trinity --genome_guided_bam `pwd`/new_gemgang1.bam \
+--max_memory 10G --genome_guided_max_intron 10000 --CPU 20 --output `pwd`/trinity_geumgang
+
+
