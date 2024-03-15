@@ -22,13 +22,13 @@ altest_gff= #aligned ESTs from a closly relate species in GFF3 format
 
 #-----Protein Homology Evidence (for best results provide a file for at least one)
 protein=/pacbio/pepseq/protseq_total.faa  #protein sequence file in fasta format (i.e. from mutiple organisms)
-protein_gff= #aligned protein homology evidence from an external GFF3 file
+protein_gff=  #aligned protein homology evidence from an external GFF3 file
 
 #-----Repeat Masking (leave values blank to skip repeat masking)
 model_org= #select a model organism for RepBase masking in RepeatMasker
-rmlib=/home/kucmb/my/EDTA/geumgang/R498_scaffold.fasta.mod.EDTA.TElib.fa #provide an organism specific repeat library in fasta form>
+rmlib= #provide an organism specific repeat library in fasta format for RepeatMasker
 repeat_protein= #provide a fasta file of transposable element proteins for RepeatRunner
-rm_gff=/home/kucmb/my/RepeatMaskerout/0310/R498_scaffold.fasta.out.gff  #pre-identified repeat elements from an external GFF3 file
+rm_gff= #pre-identified repeat elements from an external GFF3 file
 prok_rm=0 #forces MAKER to repeatmask prokaryotes (no reason to change this), 1 = yes, 0 = no
 softmask=1 #use soft-masking rather than hard-masking in BLAST (i.e. seg and dust filtering)
 
@@ -46,7 +46,7 @@ trna=1 #find tRNAs with tRNAscan, 1 = yes, 0 = no
 snoscan_rrna= #rRNA file to have Snoscan find snoRNAs
 snoscan_meth= #-O-methylation site fileto have Snoscan find snoRNAs
 unmask=0 #also run ab-initio prediction programs on unmasked sequence, 1 = yes, 0 = no
-allow_overlap= #allowed gene overlap fraction (value from 0 to 1, blank for default)
+allow_overlap=0 #allowed gene overlap fraction (value from 0 to 1, blank for default)
 
 #-----Other Annotation Feature Types (features MAKER doesn't recognize)
 other_gff= #extra features to pass-through to final MAKER generated GFF3 file
@@ -78,3 +78,46 @@ tries=2 #number of times to try a contig if there is a failure for some reason
 clean_try=0 #remove all data from previous run before retrying, 1 = yes, 0 = no
 clean_up=0 #removes theVoid directory with individual analysis files, 1 = yes, 0 = no
 TMP= #specify a directory other than the system default temporary directory for temporary files
+
+split_hit=10000 #length for the splitting of hits (expected max intron size for evidence alignments)
+min_intron=20 #minimum intron length (used for alignment polishing)
+single_exon=0 #consider single exon EST evidence when generating annotations, 1 = yes, 0 = no
+single_length=250 #min length required for single exon ESTs if 'single_exon is enabled'
+correct_est_fusion=0 #limits use of ESTs in annotation to avoid fusion genes
+
+tries=2 #number of times to try a contig if there is a failure for some reason
+clean_try=0 #remove all data from previous run before retrying, 1 = yes, 0 = no
+clean_up=0 #removes theVoid directory with individual analysis files, 1 = yes, 0 = no
+TMP= #specify a directory other than the system default temporary directory for temporary files
+
+
+nano mod_maker_opts.log (이것도 죽이고파)
+#-----Location of Executables Used by MAKER/EVALUATOR
+makeblastdb=/home/kucmb/anaconda3/envs/MAKER/bin/makeblastdb #location of NCBI+ makeblastdb executable
+blastn=/home/kucmb/anaconda3/envs/MAKER/bin/blastn #location of NCBI+ blastn executable
+blastx=/home/kucmb/anaconda3/envs/MAKER/bin/blastx #location of NCBI+ blastx executable
+tblastx=/home/kucmb/anaconda3/envs/MAKER/bin/tblastx #location of NCBI+ tblastx executable
+formatdb=/home/kucmb/anaconda3/envs/MAKER/bin/formatdb #location of NCBI formatdb executable
+blastall=/home/kucmb/anaconda3/envs/MAKER/bin/blastall #location of NCBI blastall executable
+xdformat= #location of WUBLAST xdformat executable
+blasta= #location of WUBLAST blasta executable
+prerapsearch= #location of prerapsearch executable
+rapsearch= #location of rapsearch executable
+RepeatMasker=/home/kucmb/anaconda3/envs/MAKER/bin/RepeatMasker #location of RepeatMasker executable
+exonerate=/home/kucmb/anaconda3/envs/braker/bin/exonerate #location of exonerate executable
+
+#-----Ab-initio Gene Prediction Algorithms
+snap=/usr/bin/snap #location of snap executable
+gmhmme3=/home/kucmb/GeneMark/gmes_linux_64_4/gmhmme3 #location of eukaryotic genemark executable
+gmhmmp= #location of prokaryotic genemark executable
+augustus=/home/kucmb/anaconda3/envs/braker/bin/augustus #location of augustus executable
+fgenesh= #location of fgenesh executable
+evm=/home/kucmb/EVidenceModeler-v2.1.0/EVidenceModeler #location of EvidenceModeler executable
+tRNAscan-SE=/home/kucmb/anaconda3/envs/MAKER/bin/tRNAscan-SE #location of trnascan executable
+snoscan=/home/kucmb/anaconda3/envs/MAKER/bin/snoscan #location of snoscan executable
+
+#-----Other Algorithms
+probuild=/home/kucmb/GeneMark/gmes_linux_64_4/probuild #location of probuild executable (required for genemark)
+
+실행해서 돌아감
+
