@@ -1,7 +1,9 @@
-nano round1_maker_opts.ctl
+mpiexec -np 12 maker maker_opts.ctl maker_exe.ctl maker_bopts.ctl
+
+nano maker_opts.1.ctl
 
 #-----Genome (these are always required)
-genome=/home/kucmb/my/RepeatMaskerout/0310/R498_scaffold.fasta.masked #genome sequence (fasta file or fasta embeded in GFF3 file)
+genome=/home/kucmb/my/R498_scaffold.fasta #genome sequence (fasta file or fasta embeded in GFF3 file)
 organism_type=eukaryotic #eukaryotic or prokaryotic. Default is eukaryotic
 
 #-----Re-annotation Using MAKER Derived GFF3
@@ -28,7 +30,7 @@ protein_gff=  #aligned protein homology evidence from an external GFF3 file
 model_org= #select a model organism for RepBase masking in RepeatMasker
 rmlib= #provide an organism specific repeat library in fasta format for RepeatMasker
 repeat_protein= #provide a fasta file of transposable element proteins for RepeatRunner
-rm_gff= #pre-identified repeat elements from an external GFF3 file
+rm_gff=/home/kucmb/my/RepeatMaskerout/4.gff #pre-identified repeat elements from an external GFF3 file
 prok_rm=0 #forces MAKER to repeatmask prokaryotes (no reason to change this), 1 = yes, 0 = no
 softmask=1 #use soft-masking rather than hard-masking in BLAST (i.e. seg and dust filtering)
 
@@ -91,26 +93,27 @@ clean_up=0 #removes theVoid directory with individual analysis files, 1 = yes, 0
 TMP= #specify a directory other than the system default temporary directory for temporary files
 
 
-nano mod_maker_opts.log (이것도 죽이고파)
+nano maker_exe.1.ctl (이것도 죽이고파)
+
 #-----Location of Executables Used by MAKER/EVALUATOR
-makeblastdb=/home/kucmb/anaconda3/envs/MAKER/bin/makeblastdb #location of NCBI+ makeblastdb executable
-blastn=/home/kucmb/anaconda3/envs/MAKER/bin/blastn #location of NCBI+ blastn executable
-blastx=/home/kucmb/anaconda3/envs/MAKER/bin/blastx #location of NCBI+ blastx executable
-tblastx=/home/kucmb/anaconda3/envs/MAKER/bin/tblastx #location of NCBI+ tblastx executable
+makeblastdb=/usr/bin/makeblastdb  #location of NCBI+ makeblastdb executable
+blastn=/usr/bin/blastn #location of NCBI+ blastn executable
+blastx=/usr/bin/blastx #location of NCBI+ blastx executable
+tblastx=/usr/bin/tblastx #location of NCBI+ tblastx executable
 formatdb=/home/kucmb/anaconda3/envs/MAKER/bin/formatdb #location of NCBI formatdb executable
 blastall=/home/kucmb/anaconda3/envs/MAKER/bin/blastall #location of NCBI blastall executable
 xdformat= #location of WUBLAST xdformat executable
 blasta= #location of WUBLAST blasta executable
 prerapsearch= #location of prerapsearch executable
 rapsearch= #location of rapsearch executable
-RepeatMasker=/home/kucmb/anaconda3/envs/MAKER/bin/RepeatMasker #location of RepeatMasker executable
-exonerate=/home/kucmb/anaconda3/envs/braker/bin/exonerate #location of exonerate executable
+RepeatMasker=/home/kucmb/RepeatMasker/RepeatMasker #location of RepeatMasker executable
+exonerate=/usr/bin/exonerate #location of exonerate executable
 
 #-----Ab-initio Gene Prediction Algorithms
-snap=/usr/bin/snap #location of snap executable
+snap=/home/kucmb/maker/SNAP/snap #location of snap executable
 gmhmme3=/home/kucmb/GeneMark/gmes_linux_64_4/gmhmme3 #location of eukaryotic genemark executable
 gmhmmp= #location of prokaryotic genemark executable
-augustus=/home/kucmb/anaconda3/envs/braker/bin/augustus #location of augustus executable
+augustus=/usr/bin/augustus #location of augustus executable
 fgenesh= #location of fgenesh executable
 evm=/home/kucmb/EVidenceModeler-v2.1.0/EVidenceModeler #location of EvidenceModeler executable
 tRNAscan-SE=/home/kucmb/anaconda3/envs/MAKER/bin/tRNAscan-SE #location of trnascan executable
@@ -118,6 +121,37 @@ snoscan=/home/kucmb/anaconda3/envs/MAKER/bin/snoscan #location of snoscan execut
 
 #-----Other Algorithms
 probuild=/home/kucmb/GeneMark/gmes_linux_64_4/probuild #location of probuild executable (required for genemark)
+
+nano maker_bopts.1.ctl
+#-----BLAST and Exonerate Statistics Thresholds
+blast_type=ncbi+ #set to 'ncbi+', 'ncbi' or 'wublast'
+use_rapsearch=0 #use rapsearch instead of blastx, 1 = yes, 0 = no
+
+pcov_blastn=0.8 #Blastn Percent Coverage Threhold EST-Genome Alignments
+pid_blastn=0.85 #Blastn Percent Identity Threshold EST-Genome Aligments
+eval_blastn=1e-10 #Blastn eval cutoff
+bit_blastn=40 #Blastn bit cutoff
+depth_blastn=0 #Blastn depth cutoff (0 to disable cutoff)
+
+pcov_blastx=0.5 #Blastx Percent Coverage Threhold Protein-Genome Alignments
+pid_blastx=0.4 #Blastx Percent Identity Threshold Protein-Genome Aligments
+eval_blastx=1e-06 #Blastx eval cutoff
+bit_blastx=30 #Blastx bit cutoff
+depth_blastx=0 #Blastx depth cutoff (0 to disable cutoff)
+
+pcov_tblastx=0.8 #tBlastx Percent Coverage Threhold alt-EST-Genome Alignments
+pid_tblastx=0.85 #tBlastx Percent Identity Threshold alt-EST-Genome Aligments
+eval_tblastx=1e-10 #tBlastx eval cutoff
+bit_tblastx=40 #tBlastx bit cutoff
+depth_tblastx=0 #tBlastx depth cutoff (0 to disable cutoff)
+
+pcov_rm_blastx=0.5 #Blastx Percent Coverage Threhold For Transposable Element Masking
+pid_rm_blastx=0.4 #Blastx Percent Identity Threshold For Transposbale Element Masking
+eval_rm_blastx=1e-06 #Blastx eval cutoff for transposable element masking
+bit_rm_blastx=30 #Blastx bit cutoff for transposable element masking
+
+ep_score_limit=20 #Exonerate protein percent of maximal score threshold
+en_score_limit=20 #Exonerate nucleotide percent of maximal score threshold
 
 실행해서 돌아감
 
