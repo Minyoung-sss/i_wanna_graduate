@@ -15,3 +15,8 @@ deepvariants) kucmb@kucmb-System-Product-Name:/mnt/nvme0n1/Minimap2$ minimap2 -d
 
 # geumgang hifi read mapping
 minimap2 -ayYL -t 5 --eqx -x asm10 nipp.mmi Keumkang_hifi.fastq.gz | samtools sort -o geumgang.bam --write-index 
+[WARNING] Indexing parameters (-k, -w or -H) overridden by parameters used in the prebuilt index.
+[M::main::1.956*1.00] loaded/built the index for 12 target sequence(s)
+[M::mm_mapopt_update::2.448*1.00] mid_occ = 277
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 12
+[M::mm_idx_stat::2.784*1.00] distinct minimizers: 34440456 (71.04% are singletons); average occurrences: 2.032; average spacing: 5.333; total length: 373245519
