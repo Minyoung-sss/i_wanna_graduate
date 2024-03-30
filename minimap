@@ -1,0 +1,17 @@
+export PATH=/home/kucmb/minimap2:$PATH
+
+# indexing
+
+minimap2 -d nipponbare.mmi IRGSP-1.0_genome.fasta
+deepvariants) kucmb@kucmb-System-Product-Name:/mnt/nvme0n1/Minimap2$ minimap2 -d nipp.mmi /home/kucmb/sequence/IRGSP-1.0_genome.fasta
+[M::mm_idx_gen::5.994*1.45] collected minimizers
+[M::mm_idx_gen::7.360*1.74] sorted minimizers
+[M::main::9.260*1.59] loaded/built the index for 12 target sequence(s)
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 12
+[M::mm_idx_stat::9.607*1.57] distinct minimizers: 34440456 (71.04% are singletons); average occurrences: 2.032; average spacing: 5.333; total length: 373245519
+[M::main] Version: 2.24-r1155-dirty
+[M::main] CMD: minimap2 -d nipp.mmi /home/kucmb/sequence/IRGSP-1.0_genome.fasta
+[M::main] Real time: 9.685 sec; CPU: 15.123 sec; Peak RSS: 2.656 GB
+
+# geumgang hifi read mapping
+minimap2 -ayYL -t 5 --eqx -x asm10 nipponbare.mmi Keumkang_hifi.fastq.gz | samtools sort -o geumgang.bam --write-index 
