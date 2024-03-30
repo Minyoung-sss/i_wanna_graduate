@@ -14,4 +14,4 @@ deepvariants) kucmb@kucmb-System-Product-Name:/mnt/nvme0n1/Minimap2$ minimap2 -d
 [M::main] Real time: 9.685 sec; CPU: 15.123 sec; Peak RSS: 2.656 GB
 
 # geumgang hifi read mapping
-minimap2 -ayYL -t 5 --eqx -x asm10 nipponbare.mmi Keumkang_hifi.fastq.gz | samtools sort -o geumgang.bam --write-index 
+minimap2 -ayYL -t 5 --eqx -x asm10 nipp.mmi Keumkang_hifi.fastq.gz | samtools sort -o geumgang.bam --write-index 
