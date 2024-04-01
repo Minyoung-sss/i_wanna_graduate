@@ -20,3 +20,6 @@ minimap2 -ayYL -t 5 --eqx -x asm10 nipp.mmi Keumkang_hifi.fastq.gz | samtools so
 [M::mm_mapopt_update::2.448*1.00] mid_occ = 277
 [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 12
 [M::mm_idx_stat::2.784*1.00] distinct minimizers: 34440456 (71.04% are singletons); average occurrences: 2.032; average spacing: 5.333; total length: 373245519
+
+
+ minimap2 -a -t 10 --eqx -x asm10 nipp.mmi /mnt/nvme0n1/MH63/MH63.fastq.gz | samtools sort -o MH63.bam --write-index
