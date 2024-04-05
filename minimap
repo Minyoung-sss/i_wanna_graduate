@@ -21,5 +21,8 @@ minimap2 -ayYL -t 5 --eqx -x asm10 nipp.mmi Keumkang_hifi.fastq.gz | samtools so
 [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 12
 [M::mm_idx_stat::2.784*1.00] distinct minimizers: 34440456 (71.04% are singletons); average occurrences: 2.032; average spacing: 5.333; total length: 373245519
 
-
+# 모든품종 이렇게함
  minimap2 -a -t 10 --eqx -x asm10 nipp.mmi /mnt/nvme0n1/MH63/MH63.fastq.gz | samtools sort -o MH63.bam --write-index
+
+# sniffle variant calling
+sniffles -t 15 --input SH498.bam --snf SH498.snf
