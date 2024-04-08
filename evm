@@ -1,0 +1,4 @@
+# evm
+ perl Exonerate_to_evm_gff3.pl /pacbio/pepseq/Geumgang.exonerate > /home/kucmb/EVidenceModeler-v2.1.0/geumgang/exonerate.evm.gff3
+
+ 
