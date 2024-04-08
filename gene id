@@ -1,0 +1,1 @@
+(MAKER) kucmb@kucmb-System-Product-Name:~/geneid$ bin/geneid -P rice.param.Aug_3_2004 -3 -p geneid ../my/R498_scaffold.fasta.masked > geumgang.geneid ; echo this job finished
