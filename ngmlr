@@ -1,0 +1,2 @@
+(deepvariants) kucmb@kucmb-System-Product-Name:/pacbio/mgnlr$ docker run -ti -v /home/kucmb/:/home/kucmb/ philres/ngmlr ngmlr -t 16 -r /home/kucmb/sequence/IRGSP-1.0_genome.fasta \ 
+-q /mnt/nvme0n1/SH498/SH498.fastq.gz 
