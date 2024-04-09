@@ -1,4 +1,13 @@
 # evm
  perl Exonerate_to_evm_gff3.pl /pacbio/pepseq/Geumgang.exonerate > /home/kucmb/EVidenceModeler-v2.1.0/geumgang/exonerate.evm.gff3
-
+perl EvmUtils/misc/SNAP_ExonEtermEinitEsngl_gff_to_gff3.pl /home/kucmb/SNAP/pasa.snap.gff > geumgang/snap.evm.gff3
  
+perl EVidenceModeler --weights geumgang/weight.txt --sample_id geumgang --genome /home/kucmb/my/R498_scaffold.fasta.masked --gene_predictions geumgang/total.gene.prediction.gff3 \
+--protein_alignments geumgang/exonerate.evm.gff3 --transcript_alignments geumgang/transcript.gff3 --exec_dir geumgang --segmentSize 30000 --overlapSize 10000 --CPU 30
+
+# 이걸로 돌리는 중
+perl EVidenceModeler --genome /home/kucmb/my/R498_scaffold.fasta.masked --weights weights.txt \
+--gene_predictions total.gene.prediction.gff3 --segmentSize 30000 \
+--overlapSize 10000 --protein_alignments exonerate_alignment_gff3 --transcript_alignments transcript.gff3 --sample_id rice_evm --CPU 30
+
+
