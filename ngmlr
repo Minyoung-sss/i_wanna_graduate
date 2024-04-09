@@ -1,2 +1,7 @@
-(deepvariants) kucmb@kucmb-System-Product-Name:/pacbio/mgnlr$ docker run -ti -v /home/kucmb/:/home/kucmb/ philres/ngmlr ngmlr -t 16 -r /home/kucmb/sequence/IRGSP-1.0_genome.fasta \ 
--q /mnt/nvme0n1/SH498/SH498.fastq.gz 
+(deepvariants) kucmb@kucmb-System-Product-Name:/pacbio/mgnlr$ docker run -ti -v /home/kucmb/:/home/kucmb/ philres/ngmlr ngmlr -t 16 --presets 
+\ -r /home/kucmb/sequence/IRGSP-1.0_genome.fasta -q /mnt/nvme0n1/SH498/SH498.fastq.gz --bam-fix |samtools sort -o sh498.bam --write-index 
+
+docker가 문제였네
+
+deepvariants) kucmb@kucmb-System-Product-Name:~/ngmlr/bin/ngmlr-0.2.8$ ./ngmlr -t 16 --presets pacbio -r /home/kucmb/sequence/IRGSP-1.0_genome.fasta  --bam-fix -q /mnt/nvme0n1/SH498/SH498.fastq.gz | samtools sort -o sh498.bam --write-index
+이걸로 실행함. 
