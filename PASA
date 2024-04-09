@@ -24,3 +24,5 @@ root@1a81d57671f2:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr
 
 이거 run
 
+root@1a81d57671f2:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl 
+-c /pacbio/maker/PASApipeline/pasa_conf/pasa.annotationCompare.Template.txt -A -g /pacbio/maker/PASApipeline/R498_scaffold.fasta -t /pacbio/maker/PASApipeline/Trinity-GG.fasta.clean'
