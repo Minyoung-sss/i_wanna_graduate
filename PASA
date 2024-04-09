@@ -19,10 +19,12 @@ bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/misc_utili
 
 위에 코멘트로 먼저 확인하고
 
+# Loading your preexisting protein-coding gene annotations
 root@1a81d57671f2:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/scripts/Load_Current_Gene_Annotations.dbi \
 -c /usr/local/src/PASApipeline/pasa_conf/pasa.alignAssembly.Template.txt -g /pacbio/maker/PASApipeline/R498_scaffold.fasta -P /pacbio/maker/PASApipeline/rice_evm.EVM.gff3'
 
 이거 run
 
+# Performing an annotation comparison and generating an updated gene set
 root@1a81d57671f2:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl 
 -c /pacbio/maker/PASApipeline/pasa_conf/pasa.annotationCompare.Template.txt -A -g /pacbio/maker/PASApipeline/R498_scaffold.fasta -t /pacbio/maker/PASApipeline/Trinity-GG.fasta.clean'
