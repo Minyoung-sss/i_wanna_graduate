@@ -1,0 +1,3 @@
+
+
+(MAKER) kucmb@kucmb-System-Product-Name:~/SNAP$ ./snap -lcmask -aa pasa.snap.protein.fasta -tx pasa.snap.trans.fasta pasa2.hmm /home/kucmb/my/R498_scaffold.fasta.masked -gff > new_pasa.snap.gff
