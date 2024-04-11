@@ -12,7 +12,8 @@ root@952f06e8b213:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr
 
 
 # pasa ouput file을 ab inito 하도록 변경하기
-root@9975b8565017:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/scripts/pasa_asmbls_to_training_set.dbi --pasa_transcripts_fasta /pacbio/maker/PASApipeline/mydb_pasa.sqlite.assemblies.fasta --pasa_transcripts_gff3 mydb_pasa.sqlite.pasa_assemblies.gff3'
+root@9975b8565017:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/scripts/pasa_asmbls_to_training_set.dbi 
+--pasa_transcripts_fasta /pacbio/maker/PASApipeline/mydb_pasa.sqlite.assemblies.fasta --pasa_transcripts_gff3 mydb_pasa.sqlite.pasa_assemblies.gff3'
 
 #annotation update
 bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/misc_utilities/pasa_gff3_validator.pl /pacbio/maker/PASApipeline/rice_evm.EVM.gff3
