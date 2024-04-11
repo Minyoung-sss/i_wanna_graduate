@@ -28,3 +28,15 @@ root@1a81d57671f2:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr
 # Performing an annotation comparison and generating an updated gene set
 root@1a81d57671f2:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl 
 -c /pacbio/maker/PASApipeline/pasa_conf/pasa.annotationCompare.Template.txt -A -g /pacbio/maker/PASApipeline/R498_scaffold.fasta -t /pacbio/maker/PASApipeline/Trinity-GG.fasta.clean'
+
+
+
+-----------------------
+bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl \
+-c /pacbio/maker/PASApipeline/pasa_conf/pasa.alignAssembly.Template.txt -C -R -g /pacbio/maker/PASApipeline/R498_scaffold.fasta.masked -t /pacbio/maker/PASApipeline/Trinity-GG.fasta.clean \
+-T -u /pacbio/maker/PASApipeline/Trinity-GG.fasta --ALIGNERS blat,gmap --CPU 12'
+
+bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl \
+-c /pacbio/maker/PASApipeline/pasa_conf/pasa.alignAssembly.Template.txt -C -R -g /pacbio/maker/PASApipeline/R498_scaffold.fasta.masked -t /pacbio/maker/PASApipeline/1.Trinity-GG.fasta.clean \
+-T -u /pacbio/maker/PASApipeline/1.Trinity-GG.fasta --ALIGNERS blat,gmap --CPU 8'
+
