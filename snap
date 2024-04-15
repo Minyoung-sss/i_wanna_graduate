@@ -1,3 +1,16 @@
 
 
 (MAKER) kucmb@kucmb-System-Product-Name:~/SNAP$ ./snap -lcmask -aa pasa.snap.protein.fasta -tx pasa.snap.trans.fasta pasa2.hmm /home/kucmb/my/R498_scaffold.fasta.masked -gff > new_pasa.snap.gff
+
+
+다시함
+
+# uni만 돌림
+(agat) kucmb@kucmb-System-Product-Name:~/SNAP$ fathom -validate new_geumgang.ann new_geumgang.dna > validate.ok
+106049 genes, 106038 OK, 28714 warnings, 11 errors
+(agat) kucmb@kucmb-System-Product-Name:~/SNAP$ fathom -categorize 1000 new_geumgang.ann new_geumgang.dna
+(agat) kucmb@kucmb-System-Product-Name:~/SNAP$ fathom -export 1000 -plus uni.ann uni.dna
+(agat) kucmb@kucmb-System-Product-Name:~/SNAP$ forge export.ann export.dna > forge.log 2>&1
+
+(agat) kucmb@kucmb-System-Product-Name:~/SNAP$ hmm-assembler.pl new_geumgang.snap param > new_geumgang.snap.hmm
+(agat) kucmb@kucmb-System-Product-Name:~/SNAP$ ./snap -aa new_snap.protein.fasta -tx new_snap.trans.fasta new_geumgang.snap.hmm -gff ../my/R498_scaffold.fasta.masked > new_uni.pasa.gff3
