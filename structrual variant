@@ -1,0 +1,21 @@
+# sniffles
+sniffles --input /mnt/nvme0n1/Minimap2/ZS97.hifi.bam -t 20 --minsvlen 100 --min-alignment-length 3000 --reference  /home/kucmb/sequence/IRGSP-1.0_genome.fasta --vcf ZS97.minimap2.vcf --allow-overwrite
+
+#survivor filter
+(deepvariants) kucmb@kucmb-System-Product-Name:~/SURVIVOR-master/Debug$ ./SURVIVOR filter /pacbio/sv/MH63.minimap2.vcf NA 50 -1 0.05 20 /pacbio/sv/filter/MH63.minimap2.filter.vcf
+
+#SRUVIVOR merge
+(deepvariants) kucmb@kucmb-System-Product-Name:~/SURVIVOR-master/Debug$ ls /pacbio/sv/filter/*.vcf > /pacbio/sv/filter_vcf.txt 
+(deepvariants) kucmb@kucmb-System-Product-Name:~/SURVIVOR-master/Debug$ ./SURVIVOR merge filter_vcf.txt 1000 2 1 1 1 50 merged_SURVIVOR_allsample.vcf
+merging entries: 22236
+merging entries: 16295
+merging entries: 17814
+merging entries: 16740
+merging entries: 3148
+merging entries: 2834
+merging entries: 26382
+merging entries: 19181
+merging entries: 13533
+merging entries: 16350
+merging entries: 23113
+merging entries: 20206
