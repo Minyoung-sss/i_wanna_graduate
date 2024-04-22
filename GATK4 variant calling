@@ -1,0 +1,82 @@
+#!/bin/bash
+
+PREFIX="SH498"
+
+# 입력과 출력을 위한 변수 선언
+REFERENCE="R498_scaffold_chr12.fasta"
+INPUT_SAM="/pacbio/read/bowtie2/SH498.sam"
+OUTPUT_DIR="${PREFIX}_out/"
+LOG_DIR="$OUTPUT_DIR/${PREFIX}_logs/"
+
+
+# 로그 디렉토리 생성
+mkdir -p $LOG_DIR
+
+#MarkDuplicatesSpark 
+gatk --java-options "-Xms4G -Xmx4G -XX:ParallelGCThreads=4" MarkDuplicatesSpark \
+        -I $INPUT_SAM \
+        -M $OUTPUT_DIR/${PREFIX}_Markdupli_dedup_metrics.txt \
+        -O $OUTPUT_DIR/${PREFIX}_sorted_dedup.bam 
+         2>&1 | tee $LOG_DIR/MarkDuplicate.log
+        
+# GATK HaplotypeCaller
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=4" HaplotypeCaller \
+    --reference $REFERENCE \
+    -I $OUTPUT_DIR/${PREFIX}_sorted_dedup.bam \
+    -O $OUTPUT_DIR/${PREFIX}_raw_variants.vcf \
+    2>&1 | tee $LOG_DIR/haplotypecaller1.log
+    
+# SNP와 INDEL 필터링
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=4" VariantFiltration \
+    -R $REFERENCE \
+    -V $OUTPUT_DIR/${PREFIX}_raw_variants.vcf \
+    -O $OUTPUT_DIR/${PREFIX}_filtered_variants.vcf \
+    --filter-name "low_qual" --filter-expression "QUAL < 30" \
+    --filter-name "low_QD" --filter-expression "QD < 2.0" \
+    --filter-name "low_MQ" --filter-expression "MQ < 30" \
+    2>&1 | tee $LOG_DIR/raw_variant_filtration.log
+    
+# filtering 결과 지우기    
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=4" SelectVariants \
+    --exclude-filtered \
+    -V $OUTPUT_DIR/${PREFIX}_filtered_variants.vcf \
+    -O $OUTPUT_DIR/${PREFIX}_bqsr_variants.vcf 
+    2>&1 | tee $LOG_DIR/raw_variant_filtration.log
+    
+#필터링된 SNP와 INDEL에 대한 분석
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=6" BaseRecalibrator \
+    -R $REFERENCE \
+    -I $OUTPUT_DIR/${PREFIX}_sorted_dedup.bam \
+    --known-sites $OUTPUT_DIR/${PREFIX}_bqsr_variants.vcf \
+    -O $OUTPUT_DIR/${PREFIX}_recal_data.table
+    2>&1 | tee $LOG_DIR/raw_variant_filtration.log
+ 
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=6" ApplyBQSR \
+    -R $REFERENCE \
+    -I $OUTPUT_DIR/${PREFIX}_sorted_dedup.bam\
+    -bqsr $OUTPUT_DIR/${PREFIX}_recal_data.table \
+    -O $OUTPUT_DIR/${PREFIX}_recal_reads.bam
+    2>&1 | tee $LOG_DIR/ApplyBQSR_1.log
+   
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=6" BaseRecalibrator \
+    -R $REFERENCE \
+    -I $OUTPUT_DIR/${PREFIX}_recal_reads.bam \
+    --known-sites $OUTPUT_DIR/${PREFIX}_bqsr_variants.vcf \
+    -O $OUTPUT_DIR/${PREFIX}_post_recal_data.table 
+    2>> $LOG_DIR/BaseRecalibrator_2.log
+    
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=6" AnalyzeCovariates \
+    -before $OUTPUT_DIR/${PREFIX}_recal_data.table \
+    -after $OUTPUT_DIR/${PREFIX}_post_recal_data.table \
+    -plots ${OUTPUT_DIR}recalibration_plots.pdf
+     2>> $LOG_DIR/AnalyzeCovariates.log
+     
+ # GATK HaplotypeCaller 2
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=4" HaplotypeCaller \
+    --reference $REFERENCE \
+    -I $OUTPUT_DIR/${PREFIX}_recal_reads.bam \
+    -O $OUTPUT_DIR/${PREFIX}_raw_variants_recal.vcf.gz \
+    -ERC GVCF
+    2>&1 | tee $LOG_DIR/haplotypecaller_recal.log
+    
+    
