@@ -28,9 +28,16 @@ root@1a81d57671f2:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr
 
 # Performing an annotation comparison and generating an updated gene set
 root@1a81d57671f2:/usr/local/src# bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl 
--c /pacbio/maker/PASApipeline/pasa_conf/pasa.annotationCompare.Template.txt -A -g /pacbio/maker/PASApipeline/R498_scaffold.fasta -t /pacbio/maker/PASApipeline/Trinity-GG.fasta.clean'
+-c /pacbio/maker/PASApipeline/pasa_conf/pasa.annotationCompare.Template.txt -A -g /pacbio/maker/PASApipeline/R498_scaffold.fasta -t /pacbio/maker/PASApipeline/1.Trinity-GG.fasta.clean'
 
+------------
+bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/misc_utilities/pasa_gff3_validator.pl /pacbio/maker/PASApipeline/geumgang.8.EVM.gff3'
 
+bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/scripts/Load_Current_Gene_Annotations.dbi \
+-c /pacbio/maker/PASApipeline/pasa_conf/pasa.alignAssembly.Template.txt -g /pacbio/maker/PASApipeline/R498_scaffold.fasta -P /pacbio/maker/PASApipeline/geumgang.8.EVM.gff3'
+
+bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl 
+-c /pacbio/maker/PASApipeline/pasa_conf/pasa.annotationCompare.Template.txt -A -g /pacbio/maker/PASApipeline/R498_scaffold.fasta.masked -t /pacbio/maker/PASApipeline/1.Trinity-GG.fasta.clean'
 
 -----------------------
 bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl \
@@ -41,3 +48,4 @@ bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PAS
 -c /pacbio/maker/PASApipeline/pasa_conf/pasa.alignAssembly.Template.txt -C -R -g /pacbio/maker/PASApipeline/R498_scaffold.fasta.masked -t /pacbio/maker/PASApipeline/1.Trinity-GG.fasta.clean \
 -T -u /pacbio/maker/PASApipeline/1.Trinity-GG.fasta --ALIGNERS blat,gmap --CPU 8'
 
+----------------
