@@ -1,0 +1,4 @@
+#funtional annotation 
+
+#swissprto blastp
+update_blastdb.pl --decompress swissprot
