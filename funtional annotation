@@ -1,0 +1,6 @@
+#funtional annotation 
+
+#swissprto blastp
+update_blastdb.pl --decompress swissprot
+(bioinfo) kucmb@kucmb-System-Product-Name:~/my_interproscan$ blastp -query /home/kucmb/EVidenceModeler-v2.1.0/blastdb/geumgang.8.EVM.all.filter.pep \
+-db swissprot -out swissprot.blast.results -evalue 1e-5 -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore' -num_threads 10 
