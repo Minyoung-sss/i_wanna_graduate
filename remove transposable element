@@ -7,3 +7,9 @@ blastn -query /pacbio/EDTA/geumgang/R498_scaffold.fasta.mod.EDTA.TElib.fa -db ge
 -perc_identity 30 -qcov_hsp_perc 25 -out geumgang.8.evm.TE.gene.blast.results_1e-10
 
 cat geumgang.8.evm.TE.gene.blast.results_1e-10 | awk '{ print $3 }' | sort | uniq |  sed -e "s/^evm.model./ /" > geumgang.8.evm.TE.gene.blast.results.1e-10.list
+
+
+
+---------------------------------
+blastn -query /pacbio/EDTA/geumgang/R498_scaffold.fasta.mod.EDTA.TElib.fa -db geumgang.last.2.last.EVM.gene.fasta -num_threads 16 -evalue 1e-10 \
+-outfmt '6 qseqid qlen sseqid slen pident length mismatch gapopen qstart qend send evalue bitscore' -perc_identity 30 -qcov_hsp_perc 25 -out geumgang.last.2.last.EVM.TE.gene.blast.results_1e-10
