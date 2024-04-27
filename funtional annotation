@@ -12,3 +12,79 @@ update_blastdb.pl --decompress swissprot
 
 blastp -query i /home/kucmb/EVidenceModeler-v2.1.0/blast1/geumgang.last.2.lst.EVM.te.pep_filter.pep.all \
 -db nr -out nr.blast.results -evalue 1e-5 -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore' -num_threads 10 
+
+
+
+#eggnog
+(MAKER) kucmb@kucmb-System-Product-Name:~/eggnomg$ download_eggnog_data.py 
+Download main annotation database? [y,n] y
+Downloading "eggnog.db" at /home/kucmb/anaconda3/envs/MAKER/lib/python3.11/site-packages/data...
+cd /home/kucmb/anaconda3/envs/MAKER/lib/python3.11/site-packages/data && wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog.db.gz http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog.db.gz && echo Decompressing... && gunzip eggnog.db.gz 
+--2024-04-27 17:08:39--  http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog.db.gz
+Resolving eggnogdb.embl.de (eggnogdb.embl.de)... 194.94.44.170
+Connecting to eggnogdb.embl.de (eggnogdb.embl.de)|194.94.44.170|:80... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: http://eggnog6.embl.de/download/emapperdb-5.0.2/eggnog.db.gz [following]
+--2024-04-27 17:08:40--  http://eggnog6.embl.de/download/emapperdb-5.0.2/eggnog.db.gz
+Resolving eggnog6.embl.de (eggnog6.embl.de)... 194.94.44.170
+Reusing existing connection to eggnogdb.embl.de:80.
+HTTP request sent, awaiting response... 200 OK
+Length: 6776977123 (6.3G) [application/octet-stream]
+Saving to: ‘eggnog.db.gz’
+
+eggnog.db.gz                       100%[=============================================================>]   6.31G  7.48MB/s    in 18m 26s 
+
+2024-04-27 17:27:07 (5.84 MB/s) - ‘eggnog.db.gz’ saved [6776977123/6776977123]
+
+Decompressing...
+Download taxa database? [y,n] y
+Downloading "eggnog.taxa.db" at /home/kucmb/anaconda3/envs/MAKER/lib/python3.11/site-packages/data...
+cd /home/kucmb/anaconda3/envs/MAKER/lib/python3.11/site-packages/data && wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog.taxa.tar.gz http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog.taxa.tar.gz && echo Decompressing... && tar -zxf eggnog.taxa.tar.gz && rm eggnog.taxa.tar.gz
+--2024-04-27 17:47:38--  http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog.taxa.tar.gz
+Resolving eggnogdb.embl.de (eggnogdb.embl.de)... 194.94.44.170
+Connecting to eggnogdb.embl.de (eggnogdb.embl.de)|194.94.44.170|:80... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: http://eggnog6.embl.de/download/emapperdb-5.0.2/eggnog.taxa.tar.gz [following]
+--2024-04-27 17:47:39--  http://eggnog6.embl.de/download/emapperdb-5.0.2/eggnog.taxa.tar.gz
+Resolving eggnog6.embl.de (eggnog6.embl.de)... 194.94.44.170
+Reusing existing connection to eggnogdb.embl.de:80.
+HTTP request sent, awaiting response... 200 OK
+Length: 72797584 (69M) [application/octet-stream]
+Saving to: ‘eggnog.taxa.tar.gz’
+
+eggnog.taxa.tar.gz                 100%[=============================================================>]  69.42M  7.11MB/s    in 15s     
+
+2024-04-27 17:47:55 (4.62 MB/s) - ‘eggnog.taxa.tar.gz’ saved [72797584/72797584]
+
+Decompressing...
+Download diamond database (~4GB after decompression)? [y,n] y
+Downloading fasta files " at /home/kucmb/anaconda3/envs/MAKER/lib/python3.11/site-packages/data...
+cd /home/kucmb/anaconda3/envs/MAKER/lib/python3.11/site-packages/data && wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog_proteins.dmnd.gz http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog_proteins.dmnd.gz && echo Decompressing... && gunzip eggnog_proteins.dmnd.gz 
+--2024-04-27 17:47:58--  http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog_proteins.dmnd.gz
+Resolving eggnogdb.embl.de (eggnogdb.embl.de)... 194.94.44.170
+Connecting to eggnogdb.embl.de (eggnogdb.embl.de)|194.94.44.170|:80... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: http://eggnog6.embl.de/download/emapperdb-5.0.2/eggnog_proteins.dmnd.gz [following]
+--2024-04-27 17:47:59--  http://eggnog6.embl.de/download/emapperdb-5.0.2/eggnog_proteins.dmnd.gz
+Resolving eggnog6.embl.de (eggnog6.embl.de)... 194.94.44.170
+Reusing existing connection to eggnogdb.embl.de:80.
+HTTP request sent, awaiting response... 200 OK
+Length: 5208806170 (4.9G) [application/octet-stream]
+Saving to: ‘eggnog_proteins.dmnd.gz’
+
+eggnog_proteins.dmnd.gz            100%[=============================================================>]   4.85G  8.45MB/s    in 14m 49s 
+
+2024-04-27 18:02:49 (5.59 MB/s) - ‘eggnog_proteins.dmnd.gz’ saved [5208806170/5208806170]
+
+Decompressing...
+Skipping novel families diamond and annotation databases (or already present). Use -F and -f to force download
+Skipping Pfam database (or already present). Use -P and -f to force download
+Skipping MMseqs2 database (or already present). Use -M and -f to force download
+No HMMER database requested. Use "-H -d taxid" to download the hmmer database for taxid
+Finished.
+
+
+(MAKER) kucmb@kucmb-System-Product-Name:~/eggnomg$ emapper.py -i /home/kucmb/EVidenceModeler-v2.1.0/blast1/geumgang.last.2.lst.EVM.te.pep_filter.pep.all --cpu 10 --tax_scope 38820,4447,35493,33090 -o eggnomg.1 --excel
+#  emapper-2.1.12
+# emapper.py  -i /home/kucmb/EVidenceModeler-v2.1.0/blast1/geumgang.last.2.lst.EVM.te.pep_filter.pep.all --cpu 10 --tax_scope 38820,4447,35493,33090 -o eggnomg.1 --excel
+  /home/kucmb/anaconda3/envs/MAKER/bin/diamond blastp -d '/home/kucmb/anaconda3/envs/MAKER/lib/python3.11/site-packages/data/eggnog_proteins.dmnd' -q '/home/kucmb/EVidenceModeler-v2.1.0/blast1/geumgang.last.2.lst.EVM.te.pep_filter.pep.all' --threads 10 -o '/home/kucmb/eggnog/eggnomg.1.emapper.hits' --tmpdir '/home/kucmb/eggnog/emappertmp_dmdn_hidbem59' --sensitive --iterate -e 0.001 --top 3  --outfmt 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qcovhsp scovhsp
