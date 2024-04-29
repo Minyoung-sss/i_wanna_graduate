@@ -1,0 +1,45 @@
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=8" GenomicsDBImport \
+   -V Dasan_out/Dasan_raw_variants_recal.vcf.gz \
+   -V IR8_out/IR8_raw_variants_recal.vcf.gz \
+   -V Koshikari_out/Koshikari_raw_variants_recal.vcf.gz \
+   -V MH63_out/MH63_raw_variants_recal.vcf.gz \
+   -V Milyang23_out/Milyang23_raw_variants_recal.vcf.gz \
+   -V Nipponbare_out/Nipponbare_raw_variants_recal.vcf.gz \
+   -V SH498_out/SH498_raw_variants_recal.vcf.gz \
+   -V TN1_out/TN1_raw_variants_recal.vcf.gz \ 
+   -V ZS97_out/ZS97_raw_variants_recal.vcf.gz \
+   --genomicsdb-workspace-path gemonicDBI/my_data
+  --genomicsdb-update-workspace-path
+
+
+gatk GenomicsDBImport \
+    -V data/gvcfs/mother.g.vcf \
+    -V data/gvcfs/father.g.vcf \
+    -V data/gvcfs/son.g.vcf \
+    --genomicsdb-workspace-path my_database \
+    --intervals chr20,chr21
+
+
+gatk --java-options "-Xms8G -Xmx8G -XX:ParallelGCThreads=12" HaplotypeCaller \
+    --reference R498_scaffold_chr12.fasta \
+    -I IR64/IR64_recal_reads.bam \
+    -O IR64/ir64_raw_variants_recal.vcf.gz \
+    -ERC GVCF
+    2>&1 | tee IR64/haplotypecaller_recal.log
+
+ gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=8" CombineGVCFs \
+   -R R498_scaffold_chr12.fasta \
+   --variant Dasan_out/Dasan_raw_variants_recal.vcf.gz \
+   --variant IR8_out/IR8_raw_variants_recal.vcf.gz \
+   --variant IR64/ir64_raw_variants_recal.vcf.gz \ 
+   --variant Koshikari_out/Koshikari_raw_variants_recal.vcf.gz \
+   --variant MH63_out/MH63_raw_variants_recal.vcf.gz \
+   --variant Milyang23_out/Milyang23_raw_variants_recal.vcf.gz \
+   --variant Nipponbare_out/Nipponbare_raw_variants_recal.vcf.gz \
+   --variant SH498_out/SH498_raw_variants_recal.vcf.gz \
+   --variant TN1_out/TN1_raw_variants_recal.vcf.gz \ 
+   --variant ZS97_out/ZS97_raw_variants_recal.vcf.gz \
+   -O combineGVCF/all.out.vcf
+
+
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=8" CombineGVCFs -R R498_scaffold_chr12.fasta --variant Dasan_out/Dasan_raw_variants_recal.vcf.gz --variant IR8_out/IR8_raw_variants_recal.vcf.gz --variant IR64/ir64_raw_variants_recal.vcf.gz --variant Koshikari_out/Koshikari_raw_variants_recal.vcf.gz --variant MH63_out/MH63_raw_variants_recal.vcf.gz --variant Milyang23_out/Milyang23_raw_variants_recal.vcf.gz --variant Nipponbare_out/Nipponbare_raw_variants_recal.vcf.gz --variant SH498_out/SH498_raw_variants_recal.vcf.gz --variant TN1_out/TN1_raw_variants_recal.vcf.gz --variant ZS97_out/ZS97_raw_variants_recal.vcf.gz -O combineGVCF/all.out.vcf  2>&1 | tee combineGVCF/combineGVCF.log
