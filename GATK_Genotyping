@@ -41,5 +41,12 @@ gatk --java-options "-Xms8G -Xmx8G -XX:ParallelGCThreads=12" HaplotypeCaller \
    --variant ZS97_out/ZS97_raw_variants_recal.vcf.gz \
    -O combineGVCF/all.out.vcf
 
+아래에 이걸로 함
+gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=8" CombineGVCFs -R R498_scaffold_chr12.fasta --variant Dasan_out/Dasan_raw_variants_recal.vcf.gz --variant IR8_out/IR8_raw_variants_recal.vcf.gz --variant IR64/ir64_raw_variants_recal.vcf.gz --variant Koshikari_out/Koshikari_raw_variants_recal.vcf.gz --variant MH63_out/MH63_raw_variants_recal.vcf.gz --variant Milyang23_out/Milyang23_raw_variants_recal.vcf.gz --variant Nipponbare_out/Nipponbare_raw_variants_recal.vcf.gz --variant SH498_out/SH498_raw_variants_recal.vcf.gz --variant TN1_out/TN1_raw_variants_recal.vcf.gz --variant ZS97_out/ZS97_raw_variants_recal.vcf.gz -G StandardAnnotation -G AS_StandardAnnotation -O combineGVCF/all.out.vcf  2>&1 | tee combineGVCF/combineGVCF.log
 
-gatk --java-options "-Xms6G -Xmx6G -XX:ParallelGCThreads=8" CombineGVCFs -R R498_scaffold_chr12.fasta --variant Dasan_out/Dasan_raw_variants_recal.vcf.gz --variant IR8_out/IR8_raw_variants_recal.vcf.gz --variant IR64/ir64_raw_variants_recal.vcf.gz --variant Koshikari_out/Koshikari_raw_variants_recal.vcf.gz --variant MH63_out/MH63_raw_variants_recal.vcf.gz --variant Milyang23_out/Milyang23_raw_variants_recal.vcf.gz --variant Nipponbare_out/Nipponbare_raw_variants_recal.vcf.gz --variant SH498_out/SH498_raw_variants_recal.vcf.gz --variant TN1_out/TN1_raw_variants_recal.vcf.gz --variant ZS97_out/ZS97_raw_variants_recal.vcf.gz -O combineGVCF/all.out.vcf  2>&1 | tee combineGVCF/combineGVCF.log
+
+
+ gatk --java-options "-Xms8G -Xmx8G -XX:ParallelGCThreads=12" GenotypeGVCFs \
+   -R R498_scaffold_chr12.fasta  \
+   -V combineGVCF/all.out.vcf.gz\
+   -O GenotyopeGVCF/output.vcf.gz
