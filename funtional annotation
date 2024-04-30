@@ -11,8 +11,11 @@ update_blastdb.pl --decompress swissprot
 
 
 blastp -query i /home/kucmb/EVidenceModeler-v2.1.0/blast1/geumgang.last.2.lst.EVM.te.pep_filter.pep.all \
--db nr -out nr.blast.results -evalue 1e-5 -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore' -num_threads 10 
+-db nr --taxids 4530 -out nr.blast.results -evalue 1e-5 -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids sscinames' -num_threads 10 
 
+# swissprot 이거함
+(bioinfo) kucmb@kucmb-System-Product-Name:~/my_interproscan$ blastp -query /home/kucmb/EVidenceModeler-v2.1.0/blastdb/geumgang.8.EVM.all.filter.pep -db swissprot -out swissprot.blast.1.results -evalue 1e-5 \ 
+-outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids' -num_threads 12 
 
 
 #eggnog
