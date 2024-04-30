@@ -2,6 +2,9 @@ bash -c 'cd /$PWD && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl \
 -c /usr/local/src/PASApipeline/pasa_conf/pasa.alignAssembly.Template.txt \
 -C -R -g /pacbio/maker/R498_scaffold.fasta -t /pacbio/maker/PASApipeline/Trinity-GG.fasta.clean -T -u /pacbio/maker/PASApipeline/Trinity-GG.fasta --ALIGNERS blat,gmap,minimap2 --CPU 8'
 
+# Genome-guided Trinity De novo Transcriptome Assembly
+docker run --rm -v`pwd`:`pwd` trinityrnaseq/trinityrnaseq Trinity --genome_guided_bam `pwd`/new_gemgang1.bam \
+--max_memory 10G --genome_guided_max_intron 10000 --CPU 20 --output `pwd`/trinity_geumgang
 
 #위에거 아님
 docker run --rm -it -v /tmp:/tmp -v /pacbio/maker/PASApipeline:/pacbio/maker/PASApipeline pasapipeline/pasapipeline:latest 
