@@ -41,8 +41,7 @@ Saturday, March 2, 2024: 09:15:05	CMD: mkdir -p /home/kucmb/my/hisat/trinity_out
 
 
 
-# Genome-guided Trinity De novo Transcriptome Assembly
-docker run --rm -v`pwd`:`pwd` trinityrnaseq/trinityrnaseq Trinity --genome_guided_bam `pwd`/new_gemgang1.bam \
---max_memory 10G --genome_guided_max_intron 10000 --CPU 20 --output `pwd`/trinity_geumgang
-
+#blast 
+(bioinfo) kucmb@kucmb-System-Product-Name:~/my_interproscan$ blastn -query /pacbio/hisat2/IRGSP/trinity_out.Trinity.fasta -db /media/kucmb/SAMSUNG/blastdb_nt/nt 
+-out /pacbio/hisat2/IRGSP/blast.result -taxidlist rice.ids -evalue 1e-5 -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids' -num_threads 12 
 
