@@ -35,3 +35,8 @@ protein 같이 한 결과가 영 시원찮아서
 (braker) kucmb@kucmb-System-Product-Name:/pacbio/Braker/onlyRNA$ singularity exec /home/kucmb/BRAKER-3.0.8/braker3.sif braker.pl --genome=/home/kucmb/my/RepeatMaskerout/0310/R498_scaffold.fasta.masked --bam=/home/kucmb/my/hisat/new_gemgang1.bam --species=Oryza_sativa_geumgang --gff3 --AUGUSTUS_CONFIG_PATH=/home/kucmb/Augustus/config/ --AUGUSTUS_BIN_PATH=/home/kucmb/Augustus/bin --AUGUSTUS_SCRIPTS_PATH=/home/kucmb/Augustus/scripts --threads 20
 
 rna만 돌려보기
+
+
+-----------------------
+
+(braker) kucmb@kucmb-System-Product-Name:/1TB/kucmb/my/hisat$ singularity exec /1TB/kucmb/Braker/braker3.sif braker.pl --genome=Geumgang_masked.fasta --bam=geumgang_sort.bam --species=Oryza_sativa_geumgang_masked_1 --gff3 --threads 12
