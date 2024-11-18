@@ -61,3 +61,45 @@ bash -c 'cd /pacbio/maker/PASApipeline && /usr/local/src/PASApipeline/Launch_PAS
 -T -u /pacbio/maker/PASApipeline/1.Trinity-GG.fasta --ALIGNERS blat,gmap --CPU 8'
 
 ----------------
+#update  이걸로 함
+
+root@d1552f4c4f04:/usr/local/src# bash -c 'cd /1TB/kucmb/sequence/geumgang && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl -c pasa.annotationCompare.Template.txt -A -g Geumgang_masked.fasta -t 1.Trinity-GG.fasta.clean'
+-connecting to SQLite db: /1TB/kucmb/sequence/geumgang/mydb.sqlite
+-*** Running PASA pipeine:
+* [Fri Nov 15 03:58:57 2024] Running CMD: /usr/local/src/PASApipeline/scripts/cDNA_annotation_comparer.dbi -G Geumgang_masked.fasta --CPU 2 -M '/1TB/kucmb/sequence/geumgang/mydb.sqlite'  > pasa_run.log.dir/mydb.sqlite.annotation_compare.220193.out
+* [Fri Nov 15 10:19:28 2024] Running CMD: /usr/local/src/PASApipeline/scripts/dump_valid_annot_updates.dbi -M '/1TB/kucmb/sequence/geumgang/mydb.sqlite' -V -R -g Geumgang_masked.fasta > mydb.sqlite.gene_structures_post_PASA_updates.220193.gff3
+* [Fri Nov 15 10:59:05 2024] Running CMD: /usr/local/src/PASApipeline/scripts/../misc_utilities/gff3_file_to_bed.pl mydb.sqlite.gene_structures_post_PASA_updates.220193.gff3 > mydb.sqlite.gene_structures_post_PASA_updates.220193.bed
+
+-----------------------
+docker run --rm -it \
+      -v /tmp:/tmp \
+      -v /1TB/kucmb/sequence/geumgang:/1TB/kucmb/sequence/geumgang  \
+       pasapipeline/pasapipeline:latest \
+        bash -c 'cd /1TB/kucmb/sequence/geumgang \
+              && /usr/local/src/PASApipeline/misc_utilities/pasa_gff3_validator.pl  \
+              /1TB/kucmb/sequence/geumgang/Geumgang_annotation.gff3
+              
+
+sudo docker run --rm -it \
+      -v /tmp:/tmp \
+      -v /1TB/kucmb/sequence/geumgang:/1TB/kucmb/sequence/geumgang  \
+       pasapipeline/pasapipeline:latest \
+bash -c 'cd /1TB/kucmb/sequence/geumgang && /usr/local/src/PASApipeline/scripts/Load_Current_Gene_Annotations.dbi -c pasa.alignAssembly.Template.txt -g Geumgang_masked.fasta -P Geumgang_annotation.gff3'
+              
+              
+
+              -c sqlite.confs/alignAssembly.config -C -R \
+              --ALIGNER gmap -g genome_sample.fasta -t all_transcripts.fasta.clean'
+              
+ sudo docker run --rm -it \
+      -v /tmp:/tmp \
+      -v /1TB/kucmb/sequence/geumgang:/1TB/kucmb/sequence/geumgang  \
+       pasapipeline/pasapipeline:latest \             
+bash -c 'cd /1TB/kucmb/sequence/geumgang && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl \
+-c pasa.alignAssembly.Template.txt  -C -R -g Geumgang_masked.fasta -t 1.Trinity-GG.fasta.clean \
+-T -u 1.Trinity-GG.fasta --ALIGNERS blat,gmap,minimap2 --CPU 8'
+
+
+bash -c 'cd /1TB/kucmb/sequence/geumgang && /usr/local/src/PASApipeline/Launch_PASA_pipeline.pl -c pasa.annotationCompare.Template.txt -A -g Geumgang_masked.fasta -t 1.Trinity-GG.fasta.clean'
+              
+              
