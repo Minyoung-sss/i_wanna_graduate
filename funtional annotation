@@ -18,7 +18,7 @@ blastp -query i /home/kucmb/EVidenceModeler-v2.1.0/blast1/geumgang.last.2.lst.EV
 -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids' -num_threads 12 
 
 
-#eggnog
+#eggnog (conda로 설치)
 (MAKER) kucmb@kucmb-System-Product-Name:~/eggnomg$ download_eggnog_data.py 
 Download main annotation database? [y,n] y
 Downloading "eggnog.db" at /home/kucmb/anaconda3/envs/MAKER/lib/python3.11/site-packages/data...
